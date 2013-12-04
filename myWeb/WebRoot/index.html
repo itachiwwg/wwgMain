@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>index.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="ichart/ichart.1.2.min.js"></script>
+  </head>
+  
+  <body>
+  	
+  <script type="text/javascript">
+			var data = [
+			        	{
+			        		name : '上海',
+			        		value:[4,16,18,20,32,36,38,38,36,26,20,14],
+			        		color:'#dad81f'
+			        	},
+			        	{
+			        		name : '北京',
+			        		value:[2,12,14,20,28,32,34,36,33,24,14,4],
+			        		color:'#1f7e92'
+			        	},
+			        	{
+			        		name : '西安',
+			        		value:[1,12,18,20,28,34,36,34,31,27,24,6],
+			        		color:'#76a871'
+			        	},
+			        	{
+			        		name : '天津',
+			        		value:[3,13,14,20,28,32,34,36,30,24,14,4],
+			        		color:'#6f83a5'
+			        	}
+			        ];
+	        
+			var labels = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
+			
+			$(function(){
+				var chart = new iChart.Area2D({
+					render : 'canvasDiv',
+					data: data,
+					title : '四城市2012年平均温度情况',
+					width : 800,
+					height : 400,
+					area_opacity:0.15,
+					legend : {
+						enable : true
+					},
+					tip:{
+						enable : true,
+						listeners:{
+							 //tip:提示框对象、name:数据名称、value:数据值、text:当前文本、i:数据点的索引
+							parseText:function(tip,name,value,text,i){
+								return "<span style='color:#005268;font-size:11px;font-weight:600;'>"+name+
+										"</span>&nbsp;<span style='color:#005268;font-size:20px;font-weight:600;'>"+value+"℃</span>";
+							}
+						}
+					},
+					sub_option:{
+						label:false
+					},
+					crosshair:{
+						enable:true,
+						line_color:'#62bce9'
+					},
+					coordinate:{
+						axis : {
+							width : [0, 0, 2, 0]
+						},
+						background_color:'#ffffff',
+						height:'90%',
+						valid_width:'94%',
+						height : 260,
+						scale2grid:false,
+						grids:{
+							horizontal:{
+									way:'share_alike',
+									value:8
+								}
+							}, 
+						scale:[{
+							 position:'left',	
+							 start_scale:0,
+							 end_scale:40,
+							 scale_space:5,
+							 listeners:{
+								parseText:function(t,x,y){
+									return {text:t+"℃"}
+								}
+							}
+						},{
+							 position:'bottom',	
+							 start_scale:1,
+							 end_scale:12,
+							 parseText:function(t,x,y){
+								return {textY:y+10}
+							 },
+							 labels:labels
+						}]
+					}
+				});
+				chart.draw();
+			});
+			</script>
+  
+  
+    <nav class="navbar navbar-default navbar-inverse">
+        <div class="navbar-header">
+        	<a href="#" class="navbar-brand">DataCenter</a>
+        </div>
+        <div class="collapse navbar-collapse">
+        	<ul class="nav navbar-nav">
+        		<li><a href="#">Home</a></li>
+        		<li class="dropdown">
+        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">ImportData<b class="caret"></b></a>
+        			<ul class="dropdown-menu">
+        				<li><a href="#">DataBase</a></li>
+        				<li><a href="#">XML-File</a></li>
+        				<li class="divider"></li>
+        			</ul>
+        		</li>
+        		<li class="dropdown">
+        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">ExportData<b class="caret"></b></a>
+        			<ul class="dropdown-menu">
+        				<li><a href="#">MongoDB</a></li>
+        				<li><a href="#">XML-File</a></li>
+        				<li class="divider"></li>
+        			</ul>
+        		</li>
+        		<li class="dropdown">
+        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">QueryData<b class="caret"></b></a>
+        			<ul class="dropdown-menu">
+        				<li><a href="#">MongoDB</a></li>
+        				<li><a href="#">RelationDataBase</a></li>
+        				<li class="divider"></li>
+        			</ul>
+        		</li>
+        	</ul>
+        	
+        	<form class="navbar-form navbar-right">
+    			<div class="form-group">
+    				<input type="text" class="form-control" placeholder="search"/>	
+    			</div>
+    			<button class="btn btn-default" type="submit">Search</button>
+    		</form>
+    		<ul class="nav navbar-nav navbar-right">
+     			<li class="dropdown">
+        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">User<b class="caret"></b></a>
+        			<ul class="dropdown-menu">
+          				<li><a href="#">Login</a></li>
+          				<li><a href="#">Logout</a></li>
+        			</ul>
+      			</li>
+    		</ul>
+        </div>
+    </nav>
+    <div class="Container" style="width:200px;margin-top:50px;margin-left:50px;">
+    	<div class="list-group">
+    		<a class="list-group-item" href="#">CreateItem</a>
+    		<a class="list-group-item" href="#">QueryItem</a>
+    		<a class="list-group-item" href="#">ShowInfo</a>
+    		<a class="list-group-item" href="#">ShowGraph</a>
+    	</div>
+    </div>
+    <div class="panel panel-default" style="width:830px;margin-left:300px;margin-top:-180px">
+ 		 <div class="panel-heading">查找</div>
+  		 <div class="panel-body">
+    		<form class="form-inline" >
+    			<div class="form-group">
+    				<label >姓名</label>
+   					<input type="text" class="form-control" id="personname" placeholder="输入姓名">
+  				</div>
+  				<div class="form-group">
+    				<label >身份证号</label>
+   					<input type="text" class="form-control" id="personid" placeholder="输入身份证号码">
+  				</div>
+  				<div class="form-group">
+    				<label>地址</label>
+   					<input type="text" class="form-control" id="personaddress" placeholder="输入地址">
+  				</div>
+  				&nbsp;
+  				<div class="form-group">
+    				<label></label>
+   					<button class="btn btn-info form-control" type="button" id="search" onClick="btn_search()">查找</button>
+  				</div>
+  				&nbsp;
+  				<div class="form-group">
+    				<label></label>
+   					<button class="btn btn-warning form-control" type="button" id="reset" onClick="btn_reset()">重置</button>
+  				</div>
+    		</form>
+		 </div>
+	</div>
+	
+	<script type="text/javascript">
+		function getAjax(){
+			var ajax;
+			if (window.XMLHttpRequest){
+			// code for IE7+, Firefox, Chrome, Opera, Safari
+  				ajax=new XMLHttpRequest();
+  			}
+			else{
+			// code for IE6, IE5
+  				ajax=new ActiveXObject("Microsoft.XMLHTTP");
+  			}
+			return ajax;
+		}
+		function btn_search(){
+			var pname=document.getElementById("personname").value;
+			var paddress=document.getElementById("personaddress").value;
+			var pid=document.getElementById("personid").value;
+			var ajax=getAjax();
+			ajax.open("post","query",true);
+			ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			ajax.send("pname="+pname+"&pid="+pid+"&paddress="+paddress);
+			ajax.onreadystatechange=function(){
+				if(ajax.readyState==4&&ajax.status==200){
+					var list=ajax.responseText;
+					alert(list);
+				}
+			}
+		}
+	</script>
+  </body>
+</html>

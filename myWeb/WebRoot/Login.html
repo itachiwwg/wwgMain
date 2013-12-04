@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="Buttons/js/buttons.js"></script>
+	<link rel="stylesheet" href="Buttons/css/font-awesome.min.css">
+	<link rel="stylesheet" href="Buttons/css/button.css">
+  </head>
+  
+  <body>
+      <div class="container" Style="width:400px;margin-left:500px;margin-top:100px">
+     	<form class="form-signin" Style="width:350px" action="Login" method="post">
+     		<h2 class="form-signin-heading">Welcome to Data Center</h2>
+     		Username:<input type="text" name="username" class="form-control" placeholder="Email address"/>
+     		Password:<input type="password" name="password" class="form-control" placeholder="Enter Password"/>
+     		<input type="checkbox" value="Remember-me"/>Remember me
+     		<button type="submit" class="btn btn-sm btn-primary" style="margin-left:235px">Login</button>
+     		<button type="button" class="btn btn-sm btn-danger" onClick="Response.redirect('/Regist.html')" style="margin-top:0px;margin-left:0px">Regist</button>
+     	</form>
+      </div> 
+  </body>
+</html>
